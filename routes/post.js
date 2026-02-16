@@ -13,7 +13,7 @@ router.post ("/create", async (req, res)=>{
     }
 })
 
-router.get ("/getall", async (req, res)=>{
+router.get ("/", async (req, res)=>{
     try {
         const posts = await Post.find({})
         res.status(200).send(posts)
@@ -60,7 +60,7 @@ router.put ("/update/:id", async (req, res)=>{
 router.delete ("/delete/:id", async (req, res)=>{
     try {
         const id = req.params.id
-        await Post.findByIdAndDelete(id)
+        await Post.findByIdAndDelete(id)    
         res.status(200).send({ message: "Post deleted successfully" })
     } catch (error){
         console.error(error);
